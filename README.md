@@ -12,8 +12,7 @@ Just add exprjs to your package.json, npm install or include lib/expr.js in html
 
 Example:
 ```javascript
- var Parser =  require('exprjs').Parser;
- var p = new Parser();
+ var parser =  require('exprjs');
 
  var obj1 = {
     one: {two:{three:1}}
@@ -25,17 +24,28 @@ Example:
     }
  };
 
- var parsed = p.parse('myCall(one.two.three) == 1');
+ var obj3 = {
+    one: {two:{three:3}}
+ }
 
- var result = p.run(parsed,obj1,obj2);
 
- parsed = p.parse('one.two.three = {one:1, two:"two"}');
+ var parsed = parser.parse('myCall(one.two.three) == 1');
 
- result = p.run(parsed,obj1,obj2);
+ // returns true
+ var result = parser.run(parsed,obj1,obj2);
 
- parsed = p.parse('1+1*8/4+0x0100');
+ // using different object input, returns false
+ result = parser.run(parsed,obj3,obj2);
 
- result = p.run(parsed,obj1,obj2);
+ // assignment
+ parsed = parser.parse('one.two.three = {one:1, two:"two"}');
+
+ result = parser.run(parsed,obj1,obj2);
+
+ // mathematical expressions
+ parsed = parser.parse('1+1*8/4+0x0100');
+
+ result = parser.run(parsed,obj1,obj2);
 
 ```
 

@@ -1,6 +1,5 @@
 
-var Parser =  require('../index.js').Parser;
-var p = new Parser();
+var p =  require('../index.js');
 
 module.exports.testMath = function(done){
 //    console.log(p.parse('1+1'));
@@ -62,6 +61,10 @@ module.exports.testAssignment = function(done){
         one: {two:{three:1}}
     }
 
+    var input2 = {
+        one: {two:{three:3}}
+    }
+
     var func = {
         myCall: function(){
             return arguments[0] ;
@@ -73,6 +76,10 @@ module.exports.testAssignment = function(done){
     var end = p.run(parsed,input,func);
 
     console.log('call1: ',end)
+
+    end = p.run(parsed,input2,func);
+
+    console.log('call1',end)
 
     var parsed2 = p.parse('one.two.three ? 4 : 3');
 
