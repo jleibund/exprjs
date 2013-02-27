@@ -71,24 +71,31 @@ module.exports.testAssignment = function(done){
         }
     };
 
-    var parsed = p.parse('myCall(one.two.three) == 1');
+//    var parsed = p.parse('myCall(one.two.three) == 1');
+//
+//    var end = p.run(parsed,input,func);
+//
+//    console.log('call1: ',end)
+//
+//    end = p.run(parsed,input2,func);
+//
+//    console.log('call1',end)
+//
+//    var parsed2 = p.parse('one.two.three ? 4 : 3');
+//
+//    end = p.run(parsed2,input,func);
+//
+//    console.log('result',end)
+//
+    console.log('good'.match(/good/));
+//
+//    console.log('call2 one.two.three=',input.one.two.three)
+//
+//    console.log('has own prop:', p.run(p.parse('{one:1}.hasOwnProperty("one")')))
+//
+//    console.log('trim:', p.run(p.parse('"good ".trim()')))
 
-    var end = p.run(parsed,input,func);
-
-    console.log('call1: ',end)
-
-    end = p.run(parsed,input2,func);
-
-    console.log('call1',end)
-
-    var parsed2 = p.parse('one.two.three ? 4 : 3');
-
-    end = p.run(parsed2,input,func);
-
-    console.log('result',end)
-
-    console.log('call2 one.two.three=',input.one.two.three)
-
+    console.log('regex:', p.run(p.parse('"good".match(/good/)')))
 
 //    console.log( p.parse('.prototype.toString'));
 //    console.log( p.parse('.prototype.toString'));
