@@ -1,0 +1,14 @@
+{
+    "name":"exprjs",
+    "version":"0.0.1",
+    "author" : "J.P. Leibundguth",
+    "description" : "expression language for javascript (in javascript) like ognl",
+    "private":false,
+    "dependencies":{
+        "requirejs":"latest"
+    },
+    "devDependencies":{
+        "nodeunit":"latest",
+        "should":"latest"
+    }
+}
