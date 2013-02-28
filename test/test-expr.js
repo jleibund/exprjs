@@ -1,58 +1,96 @@
 
 var p =  require('../index.js');
 
-module.exports.testMath = function(done){
-//    console.log(p.parse('1+1'));
-//    console.log(p.parse('1+2'));
-//    console.log(p.parse('1+2*8'));
-//    console.log(p.parse('1/2+2*8'));
-//    console.log(p.parse('1/2+2*8 + 0x0100'));
-//    console.log(p.parse('1/2+(2*8 + 0x0100)'));
-    done.done();
+var run = function(expr){
+    return p.run(p.parse(expr),obj1)
 }
 
-//module.exports.testLiterals = function(done){
-//    console.log(p.parse('1'));
-//    console.log(p.parse('"blue"'));
-//    console.log(p.parse('null'));
-//    console.log(p.parse('true'));
-//    console.log(p.parse('false'));
-//    console.log(p.parse('"do\?it"'));
-//    done.done();
-//}
-//
-//module.exports.testConditionals = function(done){
-//    console.log(p.parse('(one && two || three == 7)'));
-//    done.done();
-//}
+var obj1 = {
+    one:1,
+    two:'two',
+    three:{},
+    four:{one:1},
+    five:function(){ return arguments; },
+    six:{
+        one:function() {
+            return 1;
+        },
+        two:function(){
+            return 'string'
+        },
+        three:function(){
+            return {one:1};
+        },
+        four:function(){
+            return true;
+        }
+    },
+    seven:function(){
+        return false;
+    },
+    unary:0
+};
 
-module.exports.testAssignment = function(done){
+module.exports.testMath = function(test){
+    test.equal(run('1+1'),2);
+    test.equal(run('1+2'),3);
+    test.equal(run('1+2*8'),17);
+    test.equal(run('1/2+2*8'),16.5);
+    test.equal(run('1/2+2*8 + 0x0001'),17.5);
+    test.done();
+}
 
+module.exports.testLiterals = function(test){
+    test.equal(run('1'),1);
+    test.equal(run('"blue"'),'blue');
+    test.equal(run('null'),null);
+    test.equal(run('true'),true);
+    test.equal(run('false'),false);
+    test.equal(run('"do\?it"'),'do\?it');
+    test.done();
+}
 
+module.exports.testLogicals = function(test){
+    test.equal(run('one == one'),true);
+    test.equal(run('one != one'),false);
+    test.equal(run('one > one'),false);
+    test.equal(run('one \< one'),false);
+    test.equal(run('one \<= one'),true);
+    test.equal(run('one >= one'),true);
+    test.equal(run('two == two'),true);
+    test.equal(run('two === two'),true);
+    test.equal(run('two !== two'),false);
+    test.equal(run('one && two'),'two');
+    test.equal(run('two && one'),1);
+    test.equal(run('true && false'),false);
+    test.equal(run('true && (false || true)'),true);
+    test.done();
+}
 
+module.exports.testUnary = function(test){
+    test.equal(run('++unary'),1);
+    test.equal(run('unary++'),1);
+    test.equal(run('--unary'),1);
+    test.equal(run('unary--'),1);
+    test.equal(run('!unary'),true);
+    test.equal(run('unary'),0);
+    test.done();
+}
 
-//    console.log(p.parse('1+1'))
+module.exports.testAssignment = function(test){
 
-//    w.simple(p.parse('(1==1) && (2 == 1) || true'),handlers,null, result);
-//    console.log(result)
-//
-//    w.simple(p.parse('3+6-1'),handlers,null, result);
-//    console.log(result)
+    test.equal(run('three.f1=1'),1);
+    test.equal(run('three.f1'),1);
+    test.equal(run('three.f2=2'),2);
+    test.equal(run('++three.f2'),3);
+    test.equal(run('three.f1 = three.f1 + three.f2'),4);
 
-//    w.simple(p.parse('true'),handlers,null, result);
-//    console.log(result)
-//    w.simple(p.parse('do(1)'),handlers,null, result);
-//    console.log(result)
+    run('three.f3 = {}')
 
-//    w.simple(p.parse('{one:do(1), two:3, three:[2,3]}'),handlers,null, result);
-//    console.log(result)
+    test.equal(run('three.f3.one=1'),1);
+    test.equal(run('three.f3').one,1);
 
-//    w.simple(p.parse('one.two.three = 3'),handlers,null, result);
-//    console.log(result)
-
-//    w.simple(p.parse('one.two.three = (true) ? 3 : 2'),handlers,null, result);
-//    console.log(result)
-
+    test.equal(run('three.f3.one= (true)?  33: 44'),33);
 
 
 
@@ -71,44 +109,13 @@ module.exports.testAssignment = function(done){
         }
     };
 
-//    var parsed = p.parse('myCall(one.two.three) == 1');
-//
-//    var end = p.run(parsed,input,func);
-//
-//    console.log('call1: ',end)
-//
-//    end = p.run(parsed,input2,func);
-//
-//    console.log('call1',end)
-//
-//    var parsed2 = p.parse('one.two.three ? 4 : 3');
-//
-//    end = p.run(parsed2,input,func);
-//
-//    console.log('result',end)
-//
-    console.log('good'.match(/good/));
-//
-//    console.log('call2 one.two.three=',input.one.two.three)
-//
-//    console.log('has own prop:', p.run(p.parse('{one:1}.hasOwnProperty("one")')))
-//
-//    console.log('trim:', p.run(p.parse('"good ".trim()')))
-
-    console.log('regex:', p.run(p.parse('"good".match(/good/)')))
-
-//    console.log( p.parse('.prototype.toString'));
-//    console.log( p.parse('.prototype.toString'));
-//    console.log( p.parse('Array',input));
-
-
-
-    done.done();
+    test.done();
 }
 
-module.exports.testOther = function(done){
+module.exports.testOther = function(test){
 //    console.log(p.parse('one[one.length-1]'));
-    done.done();
+    test.equal(run('"good".match(/good/)')[0],'good');
+    test.done();
 }
 
 //module.exports.testUnary = function(done){
