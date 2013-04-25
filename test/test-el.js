@@ -1,4 +1,5 @@
-var p = require('../index.js');
+var Parser = new require('../parser.js');
+var p = new Parser({el:true});
 
 var run = function (expr, obj) {
     return p.run(p.parse(expr), obj||{});

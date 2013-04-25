@@ -1,6 +1,5 @@
 
-var p =  require('../index.js');
-
+var p =  require('../index');
 var run = function(expr){
     return p.run(p.parse(expr),obj1)
 }
