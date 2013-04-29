@@ -5,6 +5,12 @@ var run = function (expr, obj) {
     return p.run(p.parse(expr), obj||{});
 }
 module.exports = {
+    'myitems[0]':function(test){
+        var parse = p.parse('myitems[0]');
+        test.equals(p.run(parse, {myitems:['a','b','c']}), 'a');
+        test.done();
+    }
+    ,
     'fn:callme':function(test){
         test.equals(run('fn.callme(1)', {fn:{callme:function(){ return 3}}}), 3, 'calling func');
         test.done();
