@@ -5,6 +5,13 @@ var run = function (expr, obj) {
     return p.run(p.parse(expr), obj||{});
 }
 module.exports = {
+    'array return':function(test){
+
+        var items = [1,2,3];
+        test.equals(run(' myitems', {myitems:items}), items, 'calling func');
+
+        test.done();
+    },
     'myitems[0]':function(test){
         var parse = p.parse('myitems[0]');
         test.equals(p.run(parse, {myitems:['a','b','c']}), 'a');
