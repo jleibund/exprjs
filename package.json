@@ -11,5 +11,12 @@
     "devDependencies":{
         "nodeunit":"latest",
         "should":"latest"
+    },
+    "jam":{
+        "main":"./lib.expr.js",
+        "repositories":[{
+            "type":"git",
+            "url":"http://github.com/jleibund/exprjs.git"
+        }]
     }
 }
