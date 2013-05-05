@@ -4,9 +4,9 @@
     "author" : "J.P. Leibundguth",
     "description" : "expression language for javascript (in javascript) like ognl",
     "private":false,
-    "dependencies":{
-        "requirejs":"latest"
-    },
+//    "dependencies":{
+//        "requirejs":"latest"
+//    },
     "main": "./lib/expr.js",
     "devDependencies":{
         "nodeunit":"latest",
