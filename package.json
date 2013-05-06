@@ -7,13 +7,13 @@
     "dependencies":{
         "requirejs":"latest"
     },
-    "main": "./lib/expr.js",
+    "main": "lib/expr.js",
     "devDependencies":{
         "nodeunit":"latest",
         "should":"latest"
     },
     "jam":{
-        "main":"./lib/expr.js",
+        "main":"lib/expr.js",
         "dependencies":{
         },
         "repositories":[{
