@@ -12,7 +12,8 @@ Just add exprjs to your package.json, npm install or include lib/expr.js in html
 
 Example:
 ```javascript
- var parser =  require('exprjs');
+ var P =  require('exprjs');
+ var parser = new P();
 
  var obj1 = {
     one: {two:{three:1}}
