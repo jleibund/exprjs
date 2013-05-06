@@ -13,7 +13,7 @@
         "should":"latest"
     },
     "jam":{
-        "main":"./lib.expr.js",
+        "main":"./lib/expr.js",
         "dependencies":{
         },
         "repositories":[{
