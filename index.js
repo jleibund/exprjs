@@ -4,4 +4,4 @@ requirejs.config({
     baseUrl:__dirname+'/lib'
 })
 var Parser = requirejs('expr');
-module.exports = new Parser();
+module.exports = Parser;

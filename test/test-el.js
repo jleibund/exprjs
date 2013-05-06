@@ -1,4 +1,4 @@
-var Parser = new require('../parser.js');
+var Parser = new require('../lib/expr');
 var p = new Parser({el:true});
 
 var run = function (expr, obj) {

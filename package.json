@@ -5,7 +5,8 @@
     "description" : "expression language for javascript (in javascript) like ognl",
     "private":false,
     "dependencies":{
-        "requirejs":"latest"
+        "requirejs":"latest",
+        "amdefine":"latest"
     },
     "main": "lib/expr.js",
     "devDependencies":{

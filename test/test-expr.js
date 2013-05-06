@@ -1,5 +1,5 @@
 
-var p =  require('../index');
+var Parser =  require('../index'), p = new Parser();
 var run = function(expr){
     return p.run(p.parse(expr),obj1)
 }
