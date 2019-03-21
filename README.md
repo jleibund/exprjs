@@ -4,8 +4,7 @@ exprjs
 javascript expressions language for safe eval in browser or nodejs
 built off of customization of acorn:  http://marijnhaverbeke.nl/acorn/
 
-
-##Getting Started.
+## Getting Started.
 An alternative to eval() supporting javascript syntax for expressiveness and safe execution
 
 Just add exprjs to your package.json, npm install or include lib/expr.js in html script with requirejs
